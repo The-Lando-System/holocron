@@ -15,4 +15,10 @@
       <button mat-raised-button color="primary" (click)="logout()">Logout</button>
     </div>
   </div>
+  <div class="container">
+    <div [froalaEditor] [(froalaModel)]="content">Hello, Froala!</div>
+    <pre>
+      {{content}}
+    </pre>
+  </div>
 </div>

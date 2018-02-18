@@ -10,6 +10,8 @@ import { User, AuthService } from '../../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  public content:any;
+
   private user:User;
 
   constructor(
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
   login(): void {
     this.authSvc.login()
     .then(() => {
+      this.user = this.authSvc.getUser();
     });
   }
 

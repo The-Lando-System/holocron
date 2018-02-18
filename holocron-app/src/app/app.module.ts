@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 import { RoutingModule } from './routing.module';
 import { MaterialModule } from './material.module';
 
@@ -35,6 +37,8 @@ export function startupServiceFactory(startupService: StartupService): Function 
     HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
+    FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
   ],
   providers: [
     Broadcaster,
