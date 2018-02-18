@@ -6,13 +6,14 @@
   right: 0;
 }
 
-.top-toolbar {
-  position: fixed;
-  z-index: 2;
+.spacer {
+  flex: 1 1 auto;
 }
 
 .app-title {
   margin-left: 10px;
+  cursor: pointer;
+  outline: 0;
 }
 
 .mat-toolbar-single-row {
@@ -21,4 +22,8 @@
 
 .content-area {
   height: 100vh;
+}
+
+a:hover {
+  text-decoration: none;
 }

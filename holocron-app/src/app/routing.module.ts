@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { PostEditorComponent } from './components/post-editor/post-editor.component';
+import { PostViewerComponent } from './components/post-viewer/post-viewer.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent }
+  { path: '', component: HomeComponent },
+  { path: 'post-editor/:id', component: PostEditorComponent },
+  { path: 'post/:id', component: PostViewerComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

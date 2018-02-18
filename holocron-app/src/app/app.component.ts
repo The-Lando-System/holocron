@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
     this.listenForLogin();
   }
 
+  login(): void {
+    this.authSvc.login();
+  }
+
   logout(): void {
     this.authSvc.logout();
   }

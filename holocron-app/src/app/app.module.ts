@@ -10,7 +10,9 @@ import { RoutingModule } from './routing.module';
 import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
+import { HomeComponent } from './components/home/home.component';
+import { PostEditorComponent } from './components/post-editor/post-editor.component';
+import { PostViewerComponent } from './components/post-viewer/post-viewer.component';
 
 import { Broadcaster } from './services/broadcaster';
 import { AuthService } from './services/auth.service';
@@ -26,7 +28,9 @@ export function startupServiceFactory(startupService: StartupService): Function 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    HomeComponent,
+    PostEditorComponent,
+    PostViewerComponent
   ],
   entryComponents: [
   ],
