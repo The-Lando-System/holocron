@@ -1,5 +1,7 @@
 var configFile = require('../config');
 var request = require('request');
+var uuidv4 = require('uuid');
+var Post = require('../models/post');
 
 module.exports = function(app) {
 

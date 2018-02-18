@@ -18,6 +18,7 @@ import { Broadcaster } from './services/broadcaster';
 import { AuthService } from './services/auth.service';
 import { NotificationService } from './services/notification.service';
 import { RequestService } from './services/request.service';
+import { PostService } from './services/post.service';
 
 import { StartupService } from './services/startup.service';
 
@@ -50,6 +51,7 @@ export function startupServiceFactory(startupService: StartupService): Function 
     StartupService,
     NotificationService,
     RequestService,
+    PostService,
     {
       provide: APP_INITIALIZER,
       useFactory: startupServiceFactory,

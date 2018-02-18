@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { PostService, Post } from '../../services/post.service';
+
 @Component({
   selector: 'home',
   templateUrl: './home.component.html',
@@ -7,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  ngOnInit(): void {
+  posts:Post[] = [];
 
+  constructor(
+    private postService: PostService
+  ){}
+
+  ngOnInit(): void {
+    this.postService.getPosts()
+    .then((posts:Post[]) => {
+      this.posts = posts;
+    });
   }
 
 }
