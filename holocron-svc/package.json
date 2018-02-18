@@ -1,0 +1,20 @@
+{
+  "name": "holocron-svc",
+  "version": "1.0.0",
+  "description": "Service for the Holocron App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "the-lando-system",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
+    "mongoose": "^4.12.1",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "uuid": "^3.1.0"
+  }
+}

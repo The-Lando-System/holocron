@@ -1,0 +1,19 @@
+<div class="menu-container">
+  <mat-toolbar class="top-toolbar">
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <h1 class="app-title">Holocron</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container>
+    <mat-sidenav #snav [fixedInViewport]="true" fixedTopGap="64">
+      <mat-nav-list>
+        <a *ngIf="!user" mat-list-item routerLink="/login" (click)="snav.toggle()">Login</a>
+        <hr/>
+        <a *ngIf="user" mat-list-item (click)="logout(); snav.toggle()">Logout</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content-area">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
