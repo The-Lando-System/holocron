@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PostService, Post } from '../../services/post.service';
 
 @Component({
@@ -13,20 +13,50 @@ export class PostEditorComponent implements OnInit {
   
   constructor(
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private postService: PostService
   ){}
 
   ngOnInit(): void {
-
+    this.activatedRoute.params.forEach((params: Params) => {
+      let postId = params['id'];
+      if (postId !== 'new') {
+        this.postService.getPostById(postId)
+        .then((post:Post) => {
+          this.post = post;
+        }).catch(() => {
+          this.router.navigate(['/']);
+        });
+      } else {
+        this.post = new Post();
+      }
+    });
   }
 
   submitPost(): void {
     this.post.date = new Date().toLocaleString();
-    this.postService.createPost(this.post)
-    .then((post:Post) => {
-      this.router.navigate(['/'])
-    });
+
+    if (this.post.id) {
+      this.postService.updatePost(this.post)
+      .then(() => {
+        this.router.navigate(['/']);
+      })
+    } else {
+      this.postService.createPost(this.post)
+      .then((post:Post) => {
+        this.router.navigate(['/'])
+      });
+    }
   }
 
+  deletePost(): void {
+    if (!confirm('Are you sure you want to delete this post?')) {
+      return;
+    }
+    this.postService.deletePost(this.post)
+    .then(() => {
+      this.router.navigate(['/']);
+    });
+  }
 
 }

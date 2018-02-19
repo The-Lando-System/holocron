@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { User, AuthService } from '../../services/auth.service';
 import { PostService, Post } from '../../services/post.service';
 
 @Component({
@@ -9,13 +10,16 @@ import { PostService, Post } from '../../services/post.service';
 })
 export class HomeComponent implements OnInit {
 
+  user: User;
   posts:Post[] = [];
 
   constructor(
+    private authSvc: AuthService,
     private postService: PostService
   ){}
 
   ngOnInit(): void {
+    this.user = this.authSvc.getUser();
     this.postService.getPosts()
     .then((posts:Post[]) => {
       this.posts = posts;

@@ -5,9 +5,13 @@
     </mat-form-field>
   </div>
   <div class="row">
-    <div [froalaEditor] [(froalaModel)]="post.content"></div>
+    <div id="rich-text-editor" [froalaEditor] [(froalaModel)]="post.content"></div>
   </div>
   <div class="row">
-    <button mat-raised-button color="primary" (click)="submitPost()">Post!</button>
+    <button mat-raised-button color="primary" (click)="submitPost()">
+      {{ post.id ? 'Update' : 'Post!' }}
+    </button>
+    <span class="spacer"></span>
+    <button *ngIf="post.id" mat-raised-button (click)="deletePost()">Delete Post</button>
   </div>
 </div>

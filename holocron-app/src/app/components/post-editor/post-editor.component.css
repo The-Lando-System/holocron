@@ -9,3 +9,11 @@
 .row {
   margin-top: 20px;
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+#rich-text-editor {
+  width: 100%;
+}
