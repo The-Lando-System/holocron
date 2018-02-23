@@ -34,7 +34,14 @@ export class PostEditorComponent implements OnInit {
   }
 
   submitPost(): void {
+    let date = new Date();
+
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let year = date.getFullYear();
+
     this.post.date = new Date().toLocaleString();
+    this.post.path = `${month}_${day}_${year}_${this.post.name}`;
 
     if (this.post.id) {
       this.postService.updatePost(this.post)

@@ -23,8 +23,12 @@ export class PostViewerComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.params.forEach((params: Params) => {
-      let postId = params['id'];
-      this.postService.getPostById(postId)
+      let month = params['month'];
+      let day = params['day'];
+      let year = params['year'];
+      let name = params['name'];
+      
+      this.postService.getPostByRelativePath(`${month}/${day}/${year}/${name}`)
       .then((post:Post) => {
         this.post = post;
       }).catch(() => {

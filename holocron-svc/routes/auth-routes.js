@@ -82,7 +82,9 @@ module.exports = function(app) {
       'id': uuidv4(),
       'title': req.body.title,
       'date': req.body.date,
-      'content': req.body.content
+      'content': req.body.content,
+      'path': req.body.path,
+      'name': req.body.name
     };
 
     Post.create(newPost, function(err, post){
@@ -102,6 +104,8 @@ module.exports = function(app) {
       post.title = req.body.title || post.title;
       post.date = req.body.date || post.date;
       post.content = req.body.content || post.content;
+      post.path = req.body.path || post.path;
+      post.name = req.body.name || post.name;
       
       post.save(function(err){
         if (err) { res.send(err); return; }

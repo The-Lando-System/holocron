@@ -26,4 +26,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  getPostPath(post:Post): string[] {
+    let path = ['post'];
+    return path.concat(post.path.split('_'));
+  }
+
 }

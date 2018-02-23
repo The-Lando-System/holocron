@@ -8,7 +8,7 @@ import { PostViewerComponent } from './components/post-viewer/post-viewer.compon
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'post-editor/:id', component: PostEditorComponent },
-  { path: 'post/:id', component: PostViewerComponent },
+  { path: 'post/:month/:day/:year/:name', component: PostViewerComponent },
   { path: '**', redirectTo: '' }
 ];
 

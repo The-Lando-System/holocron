@@ -45,6 +45,18 @@ export class PostService {
     });
   }
 
+  getPostByRelativePath(path:string): Promise<Post> {
+    return new Promise<Post>((resolve, reject) => {
+      this.requestService.get(`${this.postsUrl}/${path}`, null)
+      .then((post:Post) => {
+        resolve(post);
+      }).catch((error:string) => {
+        this.notificationSvc.fail(error);
+        reject();
+      });
+    });
+  }
+
   createPost(newPost:Post): Promise<Post> {
 
     return new Promise<Post>((resolve,reject) => {
@@ -94,4 +106,6 @@ export class Post {
   title:string;
   date:string;
   content:string;
+  path:string;
+  name:string;
 }

@@ -8,6 +8,11 @@
     <div id="rich-text-editor" [froalaEditor] [(froalaModel)]="post.content"></div>
   </div>
   <div class="row">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Post Name" [(ngModel)]="post.name">
+    </mat-form-field>
+  </div>
+  <div class="row">
     <button mat-raised-button color="primary" (click)="submitPost()">
       {{ post.id ? 'Update' : 'Post!' }}
     </button>
