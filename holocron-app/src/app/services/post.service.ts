@@ -25,7 +25,7 @@ export class PostService {
     return new Promise<Post[]>((resolve,reject) => {
       this.requestService.get(this.postsUrl, null)
       .then((posts:Post[]) => {
-        resolve(posts);
+        resolve(this.sortPostsByDate(posts));
       }).catch((error:any) => {
         this.notificationSvc.fail('Error fetching posts!');
         reject();
@@ -84,7 +84,7 @@ export class PostService {
     });
   }
 
-  public updatePost(post:Post): Promise<void> {
+  updatePost(post:Post): Promise<void> {
     return new Promise<void>((resolve,reject) => {
       this.requestService.put(`${this.postsUrl}/${post.id}`, post, this.authSvc.createAuthHeaders())
       .then((post:Post) => {
@@ -97,6 +97,19 @@ export class PostService {
     });
   }
 
+  private sortPostsByDate(posts:Post[]): Post[] {
+    return posts.sort((post1:Post,post2:Post) => {
+      let date1 = new Date(post1.date);
+      let date2 = new Date(post2.date);
+      if (date1 > date2) {
+        return -1;
+      }
+      if (date1 < date2) {
+        return 1;
+      }
+      return 0;
+    });
+  }
 
 
 }
