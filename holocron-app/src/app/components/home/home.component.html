@@ -16,4 +16,13 @@
       </button>
     </mat-card-actions>
   </mat-card>
+
+  <!-- Pagination -->
+  <div class="paginator">
+    <mat-paginator [length]="allPosts.length"
+      [pageSize]="5"
+      [hidePageSize]="true"
+      (page)="handlePageClick($event)">
+    </mat-paginator>
+  </div>
 </div>

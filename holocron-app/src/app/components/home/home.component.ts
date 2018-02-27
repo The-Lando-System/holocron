@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { PageEvent, MatPaginator } from '@angular/material';
 
 import { User, AuthService } from '../../services/auth.service';
 import { PostService, Post } from '../../services/post.service';
@@ -10,8 +11,15 @@ import { PostService, Post } from '../../services/post.service';
 })
 export class HomeComponent implements OnInit {
 
+
+  @ViewChild(MatPaginator) paginator: MatPaginator
+
+  pageEvent: PageEvent;
+  pageIndex: number = 0;
+
   user: User;
-  posts:Post[] = [];
+  posts: Post[] = [];
+  allPosts: Post[] = [];
 
   constructor(
     private authSvc: AuthService,
@@ -22,7 +30,8 @@ export class HomeComponent implements OnInit {
     this.user = this.authSvc.getUser();
     this.postService.getPosts()
     .then((posts:Post[]) => {
-      this.posts = posts;
+      this.posts = this.allPosts = posts;
+      this.filterPosts();
     });
   }
 
@@ -31,4 +40,17 @@ export class HomeComponent implements OnInit {
     return path.concat(post.path.split('_'));
   }
 
+  handlePageClick(pageEvent:PageEvent) {
+    this.pageEvent = pageEvent;
+    this.pageIndex = pageEvent.pageIndex;
+    this.filterPosts();
+  }
+
+  private filterPosts() {
+    this.posts = this.allPosts.filter((t,index) => {
+      let lowerBound = ((this.pageIndex-1)*5) + 4;
+      let upperBound = (this.pageIndex*5) + 5;
+      return (lowerBound < index) && (upperBound > index);
+    });
+  }
 }
