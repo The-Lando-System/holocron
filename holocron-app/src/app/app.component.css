@@ -6,6 +6,13 @@
   right: 0;
 }
 
+.holocron-image {
+  background-image: url('../assets/holocron.png');
+  background-size: cover;
+  height: 40px;
+  width: 40px;
+}
+
 .spacer {
   flex: 1 1 auto;
 }

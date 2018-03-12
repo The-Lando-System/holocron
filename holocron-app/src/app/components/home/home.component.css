@@ -1,8 +1,38 @@
 .post-card {
-  max-width: 60%;
+  max-width: 100%;
   margin-top: 20px;
+}
+
+.post-card:hover {
+  background-color: rgba(240, 240, 240, 0.568);
 }
 
 .paginator {
   float: left;
+}
+
+.profile-pic {
+  background-image: url('../../../assets/profile-pic.jpg');
+  background-size: cover;
+}
+
+#about-me {
+  margin-top: 20px;
+}
+
+#about-me mat-card-title {
+  font-size: 1.4em;
+}
+
+#about-me mat-card-subtitle {
+  margin-top: -20px;
+}
+
+#about-me .mat-card-avatar {
+  height: 50px;
+  width: 50px;
+}
+
+#about-blog {
+  margin-top: 20px;
 }

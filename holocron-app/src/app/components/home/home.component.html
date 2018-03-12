@@ -1,28 +1,64 @@
 <div class="container">
+  
+  <div class="row">
 
-  <mat-card *ngFor="let post of posts" [routerLink]="getPostPath(post)" class="post-card clickable">
-    <mat-card-header>
-      <mat-card-title>{{post.title}}</mat-card-title>
-      <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
-    </mat-card-header>
-    <!-- <mat-card-content>
-      <p>
-        
-      </p>
-    </mat-card-content> -->
-    <mat-card-actions>
-      <button mat-icon-button *ngIf="user" [routerLink]="['post-editor/', post.id]">
-        <mat-icon>edit</mat-icon>
-      </button>
-    </mat-card-actions>
-  </mat-card>
+    <div class="col-md-8">
+      
+      <mat-card *ngFor="let post of posts" [routerLink]="getPostPath(post)" class="post-card clickable">
+        <mat-card-header>
+          <mat-card-title>{{post.title}}</mat-card-title>
+          <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+        </mat-card-header>
+        <!-- <mat-card-content>
+          <p>
+            
+          </p>
+        </mat-card-content> -->
+        <mat-card-actions>
+          <button mat-icon-button *ngIf="user" [routerLink]="['post-editor/', post.id]">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      
+      <!-- Pagination -->
+      <div class="paginator">
+        <mat-paginator [length]="allPosts.length"
+          [pageSize]="5"
+          [hidePageSize]="true"
+          (page)="handlePageClick($event)">
+        </mat-paginator>
+      </div>
+    </div>
 
-  <!-- Pagination -->
-  <div class="paginator">
-    <mat-paginator [length]="allPosts.length"
-      [pageSize]="5"
-      [hidePageSize]="true"
-      (page)="handlePageClick($event)">
-    </mat-paginator>
+    <div class="col-md-4">
+
+      <mat-card id="about-blog">
+        <mat-card-content>
+          <p>
+            <strong>Holocron</strong>: an ancient repository of knowledge and wisdom that can only be accessed by those skilled in the Force. - <i>starwars.com</i>
+          </p>
+          <p>
+            I created this blog as a repository for my ideas, thoughts, and ramblings. Enjoy!
+          </p>
+        </mat-card-content>
+      </mat-card>
+      
+      <mat-card id="about-me">
+        <mat-card-header>
+          <div mat-card-avatar class="profile-pic"></div>
+          <mat-card-title>Matt Voget</mat-card-title>
+          <mat-card-subtitle>Software Engineer</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <strong>Sites</strong><br/>
+          <a href="https://github.com/The-Lando-System">Github</a><br/>
+          <a href="https://www.linkedin.com/in/matthew-voget-47a225a1/">LinkedIn</a>
+        </mat-card-content>
+      </mat-card>
+
+      
+    </div>
+
   </div>
 </div>
