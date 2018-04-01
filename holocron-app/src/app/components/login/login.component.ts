@@ -24,8 +24,6 @@ export class LoginComponent implements OnInit {
     this.authSvc.login()
     .then(() => {
       this.router.navigate(['/']);
-    }).catch(() => {
-      this.router.navigate(['/']);
     });
   }
 
