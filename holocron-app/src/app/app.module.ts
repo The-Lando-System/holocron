@@ -11,6 +11,7 @@ import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 import { PostEditorComponent } from './components/post-editor/post-editor.component';
 import { PostViewerComponent } from './components/post-viewer/post-viewer.component';
 
@@ -30,6 +31,7 @@ export function startupServiceFactory(startupService: StartupService): Function 
   declarations: [
     AppComponent,
     HomeComponent,
+    LoginComponent,
     PostEditorComponent,
     PostViewerComponent
   ],

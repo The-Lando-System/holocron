@@ -4,8 +4,6 @@
     <h1 class="app-title" routerLink="/">Holocron</h1>
     <span class="spacer"></span>
     <a *ngIf="user" mat-raised-button color="primary" routerLink="post-editor/new">New Post</a>
-    <button *ngIf="!user" mat-button (click)="login()">Login</button>
-    <button *ngIf="user" mat-button (click)="logout()">Logout</button>
   </mat-toolbar>
 </div>
 <div class="content">
