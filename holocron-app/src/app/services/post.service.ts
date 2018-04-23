@@ -84,6 +84,21 @@ export class PostService {
     });
   }
 
+  publishPost(post: Post): Promise<void> {
+    post.isPublished = true;
+    return new Promise<void>((resolve,reject) => {
+      this.updatePost(post)
+      .then(() => {
+        this.notificationSvc.success(`Post '${post.title}' is now live!`);
+        resolve();
+      }).catch((error:string) => {
+        this.notificationSvc.fail('Encountered error trying to publish post!');
+        post.isPublished = false;
+        reject();
+      });
+    });
+  }
+
   updatePost(post:Post): Promise<void> {
     return new Promise<void>((resolve,reject) => {
       this.requestService.put(`${this.postsUrl}/${post.id}`, post, this.authSvc.createAuthHeaders())
@@ -121,4 +136,5 @@ export class Post {
   content:string;
   path:string;
   name:string;
+  isPublished:boolean;
 }

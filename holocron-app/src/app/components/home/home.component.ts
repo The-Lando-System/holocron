@@ -28,9 +28,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.authSvc.getUser();
+    this.getPosts();
+  }
+
+  getPosts() {
     this.postService.getPosts()
     .then((posts:Post[]) => {
-      this.posts = this.allPosts = posts;
+      this.allPosts = posts;
+      this.filterPublishedPosts();
+      this.posts = this.allPosts;
       this.filterPosts();
     });
   }
@@ -46,8 +52,22 @@ export class HomeComponent implements OnInit {
     this.filterPosts();
   }
 
+  publishPost(post:Post) {
+    event.preventDefault();
+    this.postService.publishPost(post)
+    .then(() => {
+      this.getPosts();
+    });
+  }
+
+  private filterPublishedPosts() {
+    this.allPosts = this.allPosts.filter((post,index) => {
+      return (this.user || post.isPublished);
+    });
+  }
+
   private filterPosts() {
-    this.posts = this.allPosts.filter((t,index) => {
+    this.posts = this.allPosts.filter((post,index) => {
       let lowerBound = ((this.pageIndex-1)*5) + 4;
       let upperBound = (this.pageIndex*5) + 5;
       return (lowerBound < index) && (upperBound > index);

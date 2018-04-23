@@ -106,6 +106,7 @@ module.exports = function(app) {
       post.content = req.body.content || post.content;
       post.path = req.body.path || post.path;
       post.name = req.body.name || post.name;
+      post.isPublished = req.body.isPublished || post.isPublished;
       
       post.save(function(err){
         if (err) { res.send(err); return; }
