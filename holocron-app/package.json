@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "startProd": "tsc && concurrently \"tsc -w\" \"lite-server -c my-bs-config.json\" --push-state",
+    "startProd": "tsc && lite-server -c my-bs-config.json --push-state",
     "build": "ng build",
     "tsc": "tsc",
     "tsc:w": "tsc -w"
