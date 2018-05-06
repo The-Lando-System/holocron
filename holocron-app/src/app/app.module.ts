@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { PostEditorComponent } from './components/post-editor/post-editor.component';
+import { RichTextEditorComponent } from './components/rich-text-editor/rich-text-editor.component';
 import { PostViewerComponent } from './components/post-viewer/post-viewer.component';
 
 import { Broadcaster } from './services/broadcaster';
@@ -33,6 +34,7 @@ export function startupServiceFactory(startupService: StartupService): Function 
     HomeComponent,
     LoginComponent,
     PostEditorComponent,
+    RichTextEditorComponent,
     PostViewerComponent
   ],
   entryComponents: [
