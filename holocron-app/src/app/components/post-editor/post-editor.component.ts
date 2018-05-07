@@ -24,6 +24,7 @@ export class PostEditorComponent implements OnInit {
         this.postService.getPostById(postId)
         .then((post:Post) => {
           this.post = post;
+          document.getElementById('editor').innerHTML = this.post.content;
         }).catch(() => {
           this.router.navigate(['/']);
         });
@@ -34,6 +35,9 @@ export class PostEditorComponent implements OnInit {
   }
 
   submitPost(): void {
+
+    this.post.content = document.getElementById('editor').innerHTML;
+
     let date = new Date();
 
     let month = date.getMonth() + 1;
